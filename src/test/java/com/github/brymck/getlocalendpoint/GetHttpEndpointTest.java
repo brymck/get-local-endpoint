@@ -34,4 +34,37 @@ class GetHttpEndpointTest {
           assertEquals("http://foo", endpoint);
         });
   }
+
+  @Test
+  @DisplayName("returns null when environment variable has no value")
+  void returnsNullWhenEnvironmentVariableHasNoValue() {
+    String endpoint = getHttpEndpoint("FOO_ADDRESS");
+    assertNull(endpoint);
+  }
+
+  @Test
+  @DisplayName("returns null when passed an unparseable port")
+  void returnsNullWhenPassedAnUnparseablePort() {
+    HashMap<String, String> overrides = new HashMap<>();
+    overrides.put("FOO_ADDRESS", "foo:bar");
+    withEnvironmentOverrides(
+        overrides,
+        () -> {
+          String endpoint = getHttpEndpoint("FOO_ADDRESS");
+          assertNull(endpoint);
+        });
+  }
+
+  @Test
+  @DisplayName("returns null when passed an invalid address")
+  void returnsNullWhenPassedAnInvalidAddress() {
+    HashMap<String, String> overrides = new HashMap<>();
+    overrides.put("FOO_ADDRESS", "!nv@l!d@ddre$$");
+    withEnvironmentOverrides(
+        overrides,
+        () -> {
+          String endpoint = getHttpEndpoint("FOO_ADDRESS");
+          assertNull(endpoint);
+        });
+  }
 }

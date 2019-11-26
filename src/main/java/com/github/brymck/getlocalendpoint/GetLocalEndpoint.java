@@ -45,6 +45,15 @@ public class GetLocalEndpoint {
       } else {
         uri = new URI("http", host, null, null);
       }
+    } catch (NumberFormatException e) {
+      String message =
+          "Could not parse port from environment variable \""
+              + name
+              + "\" with value \""
+              + address
+              + "\"";
+      logger.warn(message, e);
+      return null;
     } catch (URISyntaxException e) {
       String message =
           "Could not build URI from environment variable \""
