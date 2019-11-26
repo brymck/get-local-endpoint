@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 /**
  * This class allows retrieving service endpoints from environment variables.
  *
- * For example, suppose the environment variable {@code FOO_ADDRESS} should contain the route to a
- * service in the form {@code "host:port"}:
+ * <p>For example, suppose the environment variable {@code FOO_ADDRESS} should contain the route to
+ * a service in the form {@code "host:port"}:
  *
  * <pre>{@code
  * String fooEndpoint = getHttpEndpoint("FOO_ADDRESS");
@@ -28,7 +28,7 @@ public class GetLocalEndpoint {
    *
    * @param name the environment variable's name
    * @return a string containing the path to an HTTP endpoint, or {@code null} if the environment
-   *   variable has no value or errors were encountered constructing the URI
+   *     variable has no value or errors were encountered constructing the URI
    */
   public static @Nullable String getHttpEndpoint(@NotNull String name) {
     String address = System.getenv(name);
