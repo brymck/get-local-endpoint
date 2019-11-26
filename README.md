@@ -2,7 +2,7 @@ get-local-endpoint
 ==================
 
 [![CircleCI](https://circleci.com/gh/brymck/get-local-endpoint.svg?style=shield)](https://circleci.com/gh/brymck/get-local-endpoint)
-[![codecov](https://codecov.io/gh/brymck/get-local-endpoint/branch/master/graph/badge.svg)](https://img.shields.io/codecov/c/gh/brymck/get-local-endpoint)
+[![codecov](https://codecov.io/gh/brymck/get-local-endpoint/branch/master/graph/badge.svg)](https://codecov.io/gh/brymck/get-local-endpoint)
 
 `get-local-endpoint` is a library that allows retrieving endpoints from environment variables.
 
