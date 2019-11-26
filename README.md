@@ -22,7 +22,7 @@ Include this in your POM:
 <dependency>
   <groupId>com.github.brymck</groupId>
   <artifactId>get-local-endpoint</artifactId>
-  <version>0.9.1</version>
+  <version>0.9.2</version>
 </dependency>
 ```
 
