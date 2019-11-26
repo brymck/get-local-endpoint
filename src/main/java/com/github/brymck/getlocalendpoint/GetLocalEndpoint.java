@@ -8,17 +8,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class allows executing a code block with a modified system environment.
+ * This class allows retrieving service endpoints from environment variables.
  *
- * <p>For example:
+ * For example, suppose the environment variable {@code FOO_ADDRESS} should contain the route to a
+ * service in the form {@code "host:port"}:
  *
  * <pre>{@code
- * Map<String, String> overrides = new HashMap();
- * overrides.put("FOO", "bar");
- * WithEnvironment.withEnvironmentOverrides(overrides, () -> {
- *   String foo = System.getenv("FOO");
- *   System.out.println(foo);  // prints "bar"
- * });
+ * String fooEndpoint = getHttpEndpoint("FOO_ADDRESS");
+ * SomeApi api = new SomeApi(fooEndpoint);
  * }</pre>
  *
  * @author Bryan McKelvey
@@ -26,6 +23,13 @@ import org.slf4j.LoggerFactory;
 public class GetLocalEndpoint {
   private static Logger logger = LoggerFactory.getLogger(GetLocalEndpoint.class);
 
+  /**
+   * Retrieves an HTTP endpoint from an environment variable.
+   *
+   * @param name the environment variable's name
+   * @return a string containing the path to an HTTP endpoint, or {@code null} if the environment
+   *   variable has no value or errors were encountered constructing the URI
+   */
   public static @Nullable String getHttpEndpoint(@NotNull String name) {
     String address = System.getenv(name);
     if (address == null) {
